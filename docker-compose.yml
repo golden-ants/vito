@@ -1,0 +1,26 @@
+version: "3"
+services: 
+        db:
+                build: couchdb/
+                expose:
+                        - $COUCHDB_PORT
+                environment:
+                        - COUCHDB_USER=$COUCHDB_USER
+                        - COUCHDB_PASSWORD=$COUCHDB_PASSWORD
+        placeholder:
+                build: placeholder/
+                env_file:
+                        - .env
+                depends_on:
+                        - db
+        app:
+                build: .
+                ports: 
+                        - $APP_PORT:$APP_PORT
+                environment: 
+                        - NODE_ENV:$NODE_ENV
+                env_file:
+                        - .env
+                depends_on: 
+                        - db
+                        

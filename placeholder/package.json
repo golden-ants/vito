@@ -1,0 +1,8 @@
+{
+  "name": "placeholder",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "dependencies": {
+    "nano": "^10.0.0"
+  }
+}
